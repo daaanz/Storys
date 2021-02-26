@@ -15,19 +15,19 @@ axios.get('https://fortniteapi.io/v2/shop?lang=es', {
                 var cosmeticIcon = granted.images.featured
             }
             console.log(granted.name + ` (${granted.type.name})`);
-            Jimp.read('assets/background.png')
+            Jimp.read('background.png')
                 .then(image => {
 
                     Jimp.read(cosmeticIcon)
                         .then(icon => {
                             icon.resize(1080, 1080)
                             image.composite(icon, 0, 270)
-                            console.log(`Adding Icon to ${granted.name}`)
-                            Jimp.read('assets/blanco.png')
+                            console.log(`Icon ${granted.name}...`)
+                            Jimp.read('blanco.png')
                                 .then(rectangle => {
                                     image.composite(rectangle, 0, 0)
                                     image.write(`${granted.name}.png`)
-                                    console.log(`Saving ${granted.name}...`)
+                                    console.log(`Guardando ${granted.name}...`)
                                 })
                         })
                 })
